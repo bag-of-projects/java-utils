@@ -16,12 +16,28 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe;
+package com.nitayjoffe.util;
 
-public class Casts extends AnObject {
-  protected Casts() { }
+public class NormalVector extends VectorDbl3D {
+  public NormalVector() {}
 
-  public static <X> X cast(Object o) {
-    return (X) o;
+  public NormalVector(double[] p) {
+    super(p);
+    normalize();
+  }
+
+  public NormalVector(VectorDbl3D v) {
+    super(v);
+    normalize();
+  }
+
+  public NormalVector(double[] p1, double[] p2) {
+    super(p1, p2);
+    normalize();
+  }
+
+  public NormalVector(double x, double y, double z) {
+    super(x, y, z);
+    normalize();
   }
 }

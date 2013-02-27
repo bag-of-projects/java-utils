@@ -16,14 +16,32 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe;
+package com.nitayjoffe.util;
 
-public class Vectors extends AnObject {
-  private Vectors() {}
+public class Points extends AnObject {
+  protected Points() {}
 
-  public static VectorDbl3D crossProduct(VectorDbl3D a, VectorDbl3D b) {
-    return new VectorDbl3D(a.y() * b.z() - a.z() * b.y(),
-                     a.z() * b.x() - a.x() * b.z(),
-                     a.x() * b.y() - a.y() * b.x());
+  public static PointDbl3D average(double[][] points) {
+    PointDbl3D result = new PointDbl3D();
+    for (double[] p : points) {
+      result.add(p);
+    }
+    result.divide(points.length);
+    return result;
+  }
+
+  public static PointDbl3D average(PointDbl3D... points) {
+    PointDbl3D result = new PointDbl3D();
+    for (PointDbl3D p : points) {
+      result.add(p);
+    }
+    result.divide(points.length);
+    return result;
+  }
+
+  public static double subtract(PointDbl3D a, PointDbl3D b) {
+    PointDbl3D p = new PointDbl3D(a);
+    p.subtract(b);
+    return p.length();
   }
 }

@@ -16,37 +16,48 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe;
+package com.nitayjoffe.util;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 
-public class ImmutablePointF extends AnObject implements Comparable<ImmutablePointF> {
-  private final float x;
-  private final float y;
+public class PointInt2D extends AnObject implements Comparable<PointInt2D> {
+  private int x;
+  private int y;
 
-  public ImmutablePointF(float x, float y) {
+  public PointInt2D() {}
+
+  public PointInt2D(int x, int y) {
     this.x = x;
     this.y = y;
   }
 
-  public float getX() {
+  public int getX() {
     return x;
   }
 
-  public float getY() {
+  public int getY() {
     return y;
   }
 
-  public ImmutablePointF offset(float dx, float dy) {
-    return new ImmutablePointF(x + dx, y + dy);
+  public void setX(int x) {
+    this.x = x;
+  }
+
+  public void setY(int y) {
+    this.y = y;
+  }
+
+  public void offset(int dx, int dy) {
+    x += dx;
+    y += dy;
   }
 
   @Override
-  public int compareTo(ImmutablePointF point) {
+  public int compareTo(PointInt2D o) {
     return ComparisonChain.start()
-        .compare(x, point.x)
-        .compare(y, point.y)
+        .compare(x, o.x)
+        .compare(y, o.y)
         .result();
   }
 
@@ -55,9 +66,9 @@ public class ImmutablePointF extends AnObject implements Comparable<ImmutablePoi
     if (this == o) {
       return true;
     }
-    if (o instanceof ImmutablePointF) {
-      ImmutablePointF other = (ImmutablePointF) o;
-      return Objects.equal(x, other.x) && Objects.equal(y, other.y);
+    if (o instanceof PointInt2D) {
+      PointInt2D l = (PointInt2D) o;
+      return Objects.equal(x, l.x) && Objects.equal(y, l.y);
     }
     return false;
   }

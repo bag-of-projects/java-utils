@@ -16,32 +16,9 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe;
+package com.nitayjoffe.util;
 
-public class Points extends AnObject {
-  protected Points() {}
-
-  public static PointDbl3D average(double[][] points) {
-    PointDbl3D result = new PointDbl3D();
-    for (double[] p : points) {
-      result.add(p);
-    }
-    result.divide(points.length);
-    return result;
-  }
-
-  public static PointDbl3D average(PointDbl3D... points) {
-    PointDbl3D result = new PointDbl3D();
-    for (PointDbl3D p : points) {
-      result.add(p);
-    }
-    result.divide(points.length);
-    return result;
-  }
-
-  public static double subtract(PointDbl3D a, PointDbl3D b) {
-    PointDbl3D p = new PointDbl3D(a);
-    p.subtract(b);
-    return p.length();
-  }
+public interface Coordinate {
+  public int row();
+  public int column();
 }

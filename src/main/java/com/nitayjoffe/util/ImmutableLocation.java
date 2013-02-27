@@ -16,46 +16,43 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe;
+package com.nitayjoffe.util;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 
-public class ImmutablePoint extends AnObject implements Comparable<ImmutablePoint> {
-  private final int x;
-  private final int y;
+public class ImmutableLocation extends AnObject implements Coordinate, Comparable<ImmutableLocation> {
+  private final int row;
+  private final int column;
 
-  public ImmutablePoint(int x, int y) {
-    this.x = x;
-    this.y = y;
+  public ImmutableLocation(Coordinate coordinate) {
+    this(coordinate.row(), coordinate.column());
   }
 
-  public ImmutablePoint(PointInt2D p) {
-    this.x = p.getX();
-    this.y = p.getY();
-  }
-
-  public int getX() {
-    return x;
-  }
-
-  public int getY() {
-    return y;
-  }
-
-  public ImmutablePoint offset(int dx, int dy) {
-    return new ImmutablePoint(x + dx, y + dy);
-  }
-
-  public ImmutablePointF offset(float dx, float dy) {
-    return new ImmutablePointF(x + dx, y + dy);
+  public ImmutableLocation(int row, int column) {
+    this.row = row;
+    this.column = column;
   }
 
   @Override
-  public int compareTo(ImmutablePoint point) {
+  public int row() {
+    return row;
+  }
+
+  @Override
+  public int column() {
+    return column;
+  }
+
+  public ImmutableLocation offset(int drow, int dcolumn) {
+    return new ImmutableLocation(row + drow, column + dcolumn);
+  }
+
+  @Override
+  public int compareTo(ImmutableLocation location) {
     return ComparisonChain.start()
-        .compare(x, point.x)
-        .compare(y, point.y)
+        .compare(row, location.row)
+        .compare(column, location.column)
         .result();
   }
 
@@ -64,20 +61,21 @@ public class ImmutablePoint extends AnObject implements Comparable<ImmutablePoin
     if (this == o) {
       return true;
     }
-    if (o instanceof ImmutablePoint) {
-      ImmutablePoint other = (ImmutablePoint) o;
-      return Objects.equal(x, other.x) && Objects.equal(y, other.y);
+    if (o instanceof ImmutableLocation) {
+      ImmutableLocation other = (ImmutableLocation) o;
+      return Objects.equal(row, other.row) &&
+          Objects.equal(column, other.column);
     }
     return false;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hashCode(x, y);
+    return Objects.hashCode(row, column);
   }
 
   @Override
   public String toString() {
-    return x + "," + y;
+    return row + "," + column;
   }
 }

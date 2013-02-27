@@ -16,20 +16,22 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe;
+package com.nitayjoffe.util;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 
-public class ImmutableLocation extends AnObject implements Coordinate, Comparable<ImmutableLocation> {
-  private final int row;
-  private final int column;
+public class Location extends AnObject implements Coordinate, Comparable<Location> {
+  private int row;
+  private int column;
 
-  public ImmutableLocation(Coordinate coordinate) {
+  public Location() {}
+
+  public Location(Coordinate coordinate) {
     this(coordinate.row(), coordinate.column());
   }
 
-  public ImmutableLocation(int row, int column) {
+  public Location(int row, int column) {
     this.row = row;
     this.column = column;
   }
@@ -44,12 +46,21 @@ public class ImmutableLocation extends AnObject implements Coordinate, Comparabl
     return column;
   }
 
-  public ImmutableLocation offset(int drow, int dcolumn) {
-    return new ImmutableLocation(row + drow, column + dcolumn);
+  public void setRow(int row) {
+    this.row = row;
+  }
+
+  public void setColumn(int column) {
+    this.column = column;
+  }
+
+  public void offset(int drow, int dcolumn) {
+    row += drow;
+    column += dcolumn;
   }
 
   @Override
-  public int compareTo(ImmutableLocation location) {
+  public int compareTo(Location location) {
     return ComparisonChain.start()
         .compare(row, location.row)
         .compare(column, location.column)
@@ -61,10 +72,9 @@ public class ImmutableLocation extends AnObject implements Coordinate, Comparabl
     if (this == o) {
       return true;
     }
-    if (o instanceof ImmutableLocation) {
-      ImmutableLocation other = (ImmutableLocation) o;
-      return Objects.equal(row, other.row) &&
-          Objects.equal(column, other.column);
+    if (o instanceof Location) {
+      Location l = (Location) o;
+      return Objects.equal(row, l.row) && Objects.equal(column, l.column);
     }
     return false;
   }

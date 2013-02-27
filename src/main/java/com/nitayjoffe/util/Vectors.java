@@ -16,28 +16,14 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe;
+package com.nitayjoffe.util;
 
-public class NormalVector extends VectorDbl3D {
-  public NormalVector() {}
+public class Vectors extends AnObject {
+  private Vectors() {}
 
-  public NormalVector(double[] p) {
-    super(p);
-    normalize();
-  }
-
-  public NormalVector(VectorDbl3D v) {
-    super(v);
-    normalize();
-  }
-
-  public NormalVector(double[] p1, double[] p2) {
-    super(p1, p2);
-    normalize();
-  }
-
-  public NormalVector(double x, double y, double z) {
-    super(x, y, z);
-    normalize();
+  public static VectorDbl3D crossProduct(VectorDbl3D a, VectorDbl3D b) {
+    return new VectorDbl3D(a.y() * b.z() - a.z() * b.y(),
+                     a.z() * b.x() - a.x() * b.z(),
+                     a.x() * b.y() - a.y() * b.x());
   }
 }
