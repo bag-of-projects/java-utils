@@ -19,7 +19,6 @@
 package com.nitayjoffe.util;
 
 import com.google.common.base.Function;
-import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 
 import java.util.Arrays;
@@ -127,11 +126,7 @@ public class PointDbl3D extends AnObject implements Comparable<PointDbl3D> {
   }
 
   @Override public String toString() {
-    return Objects.toStringHelper(this)
-        .add("x", x())
-        .add("y", y())
-        .add("z", z())
-        .toString();
+    return String.format("(%.2f,%.2f,%.2f)", x(), y(), z());
   }
 
   @Override public int compareTo(PointDbl3D o) {

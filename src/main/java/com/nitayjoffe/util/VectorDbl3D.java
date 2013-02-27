@@ -113,7 +113,7 @@ public class VectorDbl3D extends AnObject implements Comparable<VectorDbl3D> {
 
   @Override
   public String toString() {
-    return point.toString();
+    return String.format("<%.2f,%.2f,%.2f>", x(), y(), z());
   }
 
   @Override
