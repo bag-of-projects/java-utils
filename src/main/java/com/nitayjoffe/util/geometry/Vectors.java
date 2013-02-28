@@ -16,9 +16,16 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe.util;
+package com.nitayjoffe.util.geometry;
 
-public interface Coordinate {
-  public int row();
-  public int column();
+import com.nitayjoffe.util.AnObject;
+
+public class Vectors extends AnObject {
+  private Vectors() {}
+
+  public static VectorDbl3D crossProduct(VectorDbl3D a, VectorDbl3D b) {
+    return new VectorDbl3D(a.y() * b.z() - a.z() * b.y(),
+                     a.z() * b.x() - a.x() * b.z(),
+                     a.x() * b.y() - a.y() * b.x());
+  }
 }

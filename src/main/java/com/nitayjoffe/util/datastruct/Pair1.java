@@ -16,20 +16,22 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe.util;
+package com.nitayjoffe.util.datastruct;
 
 import com.google.common.base.Objects;
+import com.nitayjoffe.util.AnObject;
+import com.nitayjoffe.util.Casts;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Pair<T> extends AnObject implements Iterable<T> {
+public class Pair1<T> extends AnObject implements Iterable<T> {
   private T first;
   private T second;
 
-  public Pair() {}
+  public Pair1() {}
 
-  public Pair(T first, T second) {
+  public Pair1(T first, T second) {
     this.first = first;
     this.second = second;
   }
@@ -72,8 +74,8 @@ public class Pair<T> extends AnObject implements Iterable<T> {
     if (this == obj) {
       return true;
     }
-    if (obj instanceof Pair) {
-      Pair<T> other = Casts.cast(obj);
+    if (obj instanceof Pair1) {
+      Pair1<T> other = Casts.cast(obj);
       return Objects.equal(first, other.first) &&
           Objects.equal(second, other.second);
     }

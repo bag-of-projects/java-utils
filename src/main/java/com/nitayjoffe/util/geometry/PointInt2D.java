@@ -16,10 +16,11 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe.util;
+package com.nitayjoffe.util.geometry;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
+import com.nitayjoffe.util.AnObject;
 
 public class PointInt2D extends AnObject implements Comparable<PointInt2D> {
   private int x;

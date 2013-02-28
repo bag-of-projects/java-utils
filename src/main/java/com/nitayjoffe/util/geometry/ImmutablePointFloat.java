@@ -16,43 +16,36 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe.util;
+package com.nitayjoffe.util.geometry;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
+import com.nitayjoffe.util.AnObject;
 
-public class ImmutablePoint extends AnObject implements Comparable<ImmutablePoint> {
-  private final int x;
-  private final int y;
+public class ImmutablePointFloat extends AnObject
+    implements Comparable<ImmutablePointFloat> {
+  private final float x;
+  private final float y;
 
-  public ImmutablePoint(int x, int y) {
+  public ImmutablePointFloat(float x, float y) {
     this.x = x;
     this.y = y;
   }
 
-  public ImmutablePoint(PointInt2D p) {
-    this.x = p.getX();
-    this.y = p.getY();
-  }
-
-  public int getX() {
+  public float getX() {
     return x;
   }
 
-  public int getY() {
+  public float getY() {
     return y;
   }
 
-  public ImmutablePoint offset(int dx, int dy) {
-    return new ImmutablePoint(x + dx, y + dy);
-  }
-
-  public ImmutablePointF offset(float dx, float dy) {
-    return new ImmutablePointF(x + dx, y + dy);
+  public ImmutablePointFloat offset(float dx, float dy) {
+    return new ImmutablePointFloat(x + dx, y + dy);
   }
 
   @Override
-  public int compareTo(ImmutablePoint point) {
+  public int compareTo(ImmutablePointFloat point) {
     return ComparisonChain.start()
         .compare(x, point.x)
         .compare(y, point.y)
@@ -64,8 +57,8 @@ public class ImmutablePoint extends AnObject implements Comparable<ImmutablePoin
     if (this == o) {
       return true;
     }
-    if (o instanceof ImmutablePoint) {
-      ImmutablePoint other = (ImmutablePoint) o;
+    if (o instanceof ImmutablePointFloat) {
+      ImmutablePointFloat other = (ImmutablePointFloat) o;
       return Objects.equal(x, other.x) && Objects.equal(y, other.y);
     }
     return false;

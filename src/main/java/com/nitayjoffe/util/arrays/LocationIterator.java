@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe.util;
+package com.nitayjoffe.util.arrays;
 
 import com.google.common.collect.UnmodifiableIterator;
 

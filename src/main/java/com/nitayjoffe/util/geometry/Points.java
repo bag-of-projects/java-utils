@@ -16,13 +16,15 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe.util;
+package com.nitayjoffe.util.geometry;
+
+import com.nitayjoffe.util.AnObject;
 
 public class Points extends AnObject {
   protected Points() {}
 
   public static PointDbl3D average(double[][] points) {
-    PointDbl3D result = new PointDbl3D();
+    PointDbl3D result = PointDbl3D.origin();
     for (double[] p : points) {
       result.add(p);
     }
@@ -31,7 +33,7 @@ public class Points extends AnObject {
   }
 
   public static PointDbl3D average(PointDbl3D... points) {
-    PointDbl3D result = new PointDbl3D();
+    PointDbl3D result = PointDbl3D.origin();
     for (PointDbl3D p : points) {
       result.add(p);
     }

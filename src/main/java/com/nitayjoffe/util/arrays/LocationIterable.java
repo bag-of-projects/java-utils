@@ -16,7 +16,9 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe.util;
+package com.nitayjoffe.util.arrays;
+
+import com.nitayjoffe.util.AnObject;
 
 import java.util.Iterator;
 

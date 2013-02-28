@@ -16,10 +16,12 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe.util;
+package com.nitayjoffe.util.geometry;
 
 import com.google.common.base.Function;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.ComparisonChain;
+import com.nitayjoffe.util.AnObject;
 
 import java.util.Arrays;
 
@@ -41,23 +43,26 @@ public class PointDbl3D extends AnObject implements Comparable<PointDbl3D> {
   private static final int Y = 1;
   private static final int Z = 2;
 
-  private double[] data = new double[DIMENSIONS];
-
-  public PointDbl3D() {}
+  private final double[] data;
 
   public PointDbl3D(PointDbl3D p) {
     this(p.data);
   }
 
   public PointDbl3D(double[] p) {
-    assert data.length == p.length;
+    Preconditions.checkArgument(p.length == DIMENSIONS);
     data = Arrays.copyOf(p, p.length);
   }
 
   public PointDbl3D(double x, double y, double z) {
+    data = new double[DIMENSIONS];
     data[X] = x;
     data[Y] = y;
     data[Z] = z;
+  }
+
+  public static PointDbl3D origin() {
+    return new PointDbl3D(0.0, 0.0, 0.0);
   }
 
   public double x() { return data[X]; }
@@ -104,7 +109,15 @@ public class PointDbl3D extends AnObject implements Comparable<PointDbl3D> {
     }
   }
 
+  public void divide(long l) {
+    Preconditions.checkArgument(l > 0, "Cannot divide by non-positive");
+    for (int i = 0; i < data.length; ++i) {
+      data[i] /= l;
+    }
+  }
+
   public void divide(double d) {
+    Preconditions.checkArgument(d > 0, "Cannot divide by non-positive");
     for (int i = 0; i < data.length; ++i) {
       data[i] /= d;
     }

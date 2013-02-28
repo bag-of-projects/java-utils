@@ -16,16 +16,13 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe.util;
+package com.nitayjoffe.util.geometry;
 
 import com.google.common.base.Preconditions;
+import com.nitayjoffe.util.AnObject;
 
 public class VectorDbl3D extends AnObject implements Comparable<VectorDbl3D> {
   private final PointDbl3D point;
-
-  public VectorDbl3D() {
-    point = new PointDbl3D();
-  }
 
   public VectorDbl3D(VectorDbl3D p) {
     point = new PointDbl3D(p.point);
@@ -92,6 +89,10 @@ public class VectorDbl3D extends AnObject implements Comparable<VectorDbl3D> {
 
   public double length() {
     return Math.sqrt(dotProduct(this));
+  }
+
+  public void divide(long l) {
+    point.divide(l);
   }
 
   public void divide(double d) {

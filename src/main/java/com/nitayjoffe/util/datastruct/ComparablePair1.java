@@ -16,22 +16,23 @@
  * limitations under the License.
  */
 
-package com.nitayjoffe.util;
+package com.nitayjoffe.util.datastruct;
 
 import com.google.common.collect.ComparisonChain;
+import com.nitayjoffe.util.AnObject;
 
 import java.util.Iterator;
 
-public class ComparablePair<T extends Comparable> extends AnObject
-    implements Comparable<ComparablePair<T>>, Iterable<T> {
-  private final Pair<T> pair;
+public class ComparablePair1<T extends Comparable> extends AnObject
+    implements Comparable<ComparablePair1<T>>, Iterable<T> {
+  private final Pair1<T> pair;
 
-  public ComparablePair() {
-    pair = new Pair<T>();
+  public ComparablePair1() {
+    pair = new Pair1<T>();
   }
 
-  public ComparablePair(T first, T second) {
-    pair = new Pair<T>(first, second);
+  public ComparablePair1(T first, T second) {
+    pair = new Pair1<T>(first, second);
   }
 
   public boolean contains(T x) {
@@ -60,7 +61,7 @@ public class ComparablePair<T extends Comparable> extends AnObject
   }
 
   @Override
-  public int compareTo(ComparablePair<T> o) {
+  public int compareTo(ComparablePair1<T> o) {
     if (this == o) {
       return 0;
     }
@@ -80,8 +81,8 @@ public class ComparablePair<T extends Comparable> extends AnObject
     if (this == obj) {
       return true;
     }
-    if (obj instanceof ComparablePair) {
-      ComparablePair cp = (ComparablePair) obj;
+    if (obj instanceof ComparablePair1) {
+      ComparablePair1 cp = (ComparablePair1) obj;
       return pair.equals(cp.pair);
     }
     return false;
