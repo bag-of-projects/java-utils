@@ -83,7 +83,7 @@ public class PointDbl3D extends AnObject implements Comparable<PointDbl3D> {
   }
 
   public double length() {
-    return Math.sqrt(x() * x() + y() * y() + z() * z());
+    return Points.length(this);
   }
 
   public void add(PointDbl3D o) {

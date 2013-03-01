@@ -41,9 +41,15 @@ public class Points extends AnObject {
     return result;
   }
 
+  private static double length(double x, double y, double z) {
+    return Math.sqrt(x * x + y * y + z * z);
+  }
+
+  public static double length(PointDbl3D point) {
+    return length(point.x(), point.y(), point.z());
+  }
+
   public static double subtract(PointDbl3D a, PointDbl3D b) {
-    PointDbl3D p = new PointDbl3D(a);
-    p.subtract(b);
-    return p.length();
+    return length(a.x() - b.x(), a.y() - b.y(), a.z() - b.z());
   }
 }
