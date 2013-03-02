@@ -21,6 +21,7 @@ package com.nitayjoffe.util.arrays;
 import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 import com.nitayjoffe.util.AnObject;
+import com.nitayjoffe.util.numbers.Numbers;
 
 public class Location extends AnObject implements Coordinate, Comparable<Location> {
   private int row;
@@ -75,7 +76,7 @@ public class Location extends AnObject implements Coordinate, Comparable<Locatio
     }
     if (o instanceof Location) {
       Location l = (Location) o;
-      return Objects.equal(row, l.row) && Objects.equal(column, l.column);
+      return Numbers.equal(row, l.row) && Numbers.equal(column, l.column);
     }
     return false;
   }

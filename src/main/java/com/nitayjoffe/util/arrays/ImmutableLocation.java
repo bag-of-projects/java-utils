@@ -21,6 +21,7 @@ package com.nitayjoffe.util.arrays;
 import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 import com.nitayjoffe.util.AnObject;
+import com.nitayjoffe.util.numbers.Numbers;
 
 public class ImmutableLocation extends AnObject
     implements Coordinate, Comparable<ImmutableLocation> {
@@ -65,8 +66,8 @@ public class ImmutableLocation extends AnObject
     }
     if (o instanceof ImmutableLocation) {
       ImmutableLocation other = (ImmutableLocation) o;
-      return Objects.equal(row, other.row) &&
-          Objects.equal(column, other.column);
+      return Numbers.equal(row, other.row) &&
+          Numbers.equal(column, other.column);
     }
     return false;
   }

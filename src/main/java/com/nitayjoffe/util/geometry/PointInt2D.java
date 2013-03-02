@@ -21,6 +21,7 @@ package com.nitayjoffe.util.geometry;
 import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 import com.nitayjoffe.util.AnObject;
+import com.nitayjoffe.util.numbers.Numbers;
 
 public class PointInt2D extends AnObject implements Comparable<PointInt2D> {
   private int x;
@@ -69,7 +70,7 @@ public class PointInt2D extends AnObject implements Comparable<PointInt2D> {
     }
     if (o instanceof PointInt2D) {
       PointInt2D l = (PointInt2D) o;
-      return Objects.equal(x, l.x) && Objects.equal(y, l.y);
+      return Numbers.equal(x, l.x) && Numbers.equal(y, l.y);
     }
     return false;
   }

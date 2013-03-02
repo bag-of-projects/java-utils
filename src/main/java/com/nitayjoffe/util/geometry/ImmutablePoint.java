@@ -21,6 +21,7 @@ package com.nitayjoffe.util.geometry;
 import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 import com.nitayjoffe.util.AnObject;
+import com.nitayjoffe.util.numbers.Numbers;
 
 public class ImmutablePoint extends AnObject implements Comparable<ImmutablePoint> {
   private final int x;
@@ -67,7 +68,7 @@ public class ImmutablePoint extends AnObject implements Comparable<ImmutablePoin
     }
     if (o instanceof ImmutablePoint) {
       ImmutablePoint other = (ImmutablePoint) o;
-      return Objects.equal(x, other.x) && Objects.equal(y, other.y);
+      return Numbers.equal(x, other.x) && Numbers.equal(y, other.y);
     }
     return false;
   }
