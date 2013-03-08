@@ -15,5 +15,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/** Array utilities. */
-package com.nitayjoffe.util.arrays;
+/** Range utilities. */
+package com.nitayjoffe.util.ranges;

@@ -15,24 +15,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.nitayjoffe.util.iterators;
 
-package com.nitayjoffe.util.arrays;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Lists;
 
-import com.nitayjoffe.util.AnObject;
-
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Queue;
 
-public class LocationIterable extends AnObject {
-  public static Iterable<Coordinate> make(final int rowLength,
-                                          final int columnLength) {
-    return make(0, rowLength, 0, columnLength);
+public class IteratorUtils {
+  public static <E> Iterator<E> interleave(final Iterator<E> ... iterators) {
+    return interleave(Arrays.asList(iterators));
   }
 
-  public static Iterable<Coordinate> make(final int rowStart,
-      final int rowEnd, final int columnStart, final int columnEnd) {
-    return new Iterable<Coordinate>() {
-      @Override public Iterator<Coordinate> iterator() {
-        return new LocationIterator(rowStart, rowEnd, columnStart, columnEnd);
+  public static <E> Iterator<E> interleave(final Iterable<Iterator<E>> iterators) {
+    return new AbstractIterator<E>() {
+      private Queue<Iterator<E>> queue = Lists.newLinkedList(iterators);
+      @Override
+      protected E computeNext() {
+        while (!queue.isEmpty()) {
+          Iterator<E> topIter = queue.poll();
+          if (topIter.hasNext()) {
+            E result = topIter.next();
+            queue.offer(topIter);
+            return result;
+          }
+        }
+        return endOfData();
       }
     };
   }

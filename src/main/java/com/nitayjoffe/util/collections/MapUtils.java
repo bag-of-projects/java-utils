@@ -22,6 +22,19 @@ import java.util.Map;
 public class MapUtils {
   protected MapUtils() { }
 
+  /**
+   * Put key,value mapping only if key does not already exist. Does a lookup
+   * first, then an insert.
+   *
+   * Not thread-safe.
+   *
+   * @param map Map to put into
+   * @param key key to check and insert
+   * @param newValue value to insert
+   * @param <K> key type
+   * @param <V> value type
+   * @return existing value, or new value if key was not present
+   */
   public static <K,V> V putIfAbsent(Map<K, V> map, K key, V newValue) {
     V value = map.get(key);
     if (value != null) {

@@ -15,10 +15,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package com.nitayjoffe.util.arrays;
-
-public interface Coordinate {
-  public int row();
-  public int column();
-}
+/** Iterator utilities. */
+package com.nitayjoffe.util.iterators;

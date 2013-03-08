@@ -61,7 +61,7 @@ public class ComparablePair1<T extends Comparable> extends AnObject
   }
 
   @Override
-  public int compareTo(ComparablePair1<T> o) {
+  public int compareTo(final ComparablePair1<T> o) {
     if (this == o) {
       return 0;
     }
@@ -77,7 +77,7 @@ public class ComparablePair1<T extends Comparable> extends AnObject
   }
 
   @Override
-  public boolean equals(Object obj) {
+  public boolean equals(final Object obj) {
     if (this == obj) {
       return true;
     }

@@ -32,6 +32,10 @@ public class VectorDbl3D extends AnObject implements Comparable<VectorDbl3D> {
     point = new PointDbl3D(p);
   }
 
+  public PointDbl3D getPoint() {
+    return point;
+  }
+
   /**
    * Constructor for vector pointing from p1 to p2.
    *
