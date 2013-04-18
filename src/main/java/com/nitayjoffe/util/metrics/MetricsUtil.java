@@ -46,7 +46,19 @@ public class MetricsUtil {
   }
 
   public static void dumpToStream(MetricsRegistry metrics, PrintStream out) {
-    new ConsoleReporter(metrics, out, MetricPredicate.ALL).run();
+    consoleReporter(metrics, out).run();
+  }
+
+  public static ConsoleReporter consoleReporter() {
+    return consoleReporter(Metrics.defaultRegistry(), System.err);
+  }
+
+  public static ConsoleReporter consoleReporter(PrintStream out) {
+    return consoleReporter(Metrics.defaultRegistry(), out);
+  }
+
+  public static ConsoleReporter consoleReporter(MetricsRegistry metrics, PrintStream out) {
+    return new ConsoleReporter(metrics, out, MetricPredicate.ALL);
   }
 
   public static void dumpToFile(String path) throws FileNotFoundException {

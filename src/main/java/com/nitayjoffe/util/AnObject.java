@@ -21,6 +21,8 @@ package com.nitayjoffe.util;
 import java.util.Arrays;
 
 public class AnObject {
+  protected AnObject() {}
+
   public static void p(Object ... objects) {
     for (Object object : objects) {
       printObject(object);

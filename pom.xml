@@ -46,6 +46,7 @@
     <air.check.fail-all>true</air.check.fail-all>
     <air.check.fail-findbugs>false</air.check.fail-findbugs>
     <air.check.skip-pmd>true</air.check.skip-pmd>
+
     <project.build.targetJdk>1.6</project.build.targetJdk>
   </properties>
 

@@ -17,12 +17,14 @@
  */
 package com.nitayjoffe.util.ranges;
 
-import com.google.common.collect.DiscreteDomains;
+import com.google.common.collect.ContiguousSet;
 import com.google.common.collect.Range;
 import com.google.common.collect.UnmodifiableIterator;
 
 import java.util.Iterator;
 import java.util.Set;
+
+import static com.google.common.collect.DiscreteDomain.integers;
 
 public class Range2D implements Iterable<Int2D> {
   private class ComboIter extends UnmodifiableIterator<Int2D> {
@@ -58,8 +60,8 @@ public class Range2D implements Iterable<Int2D> {
   private final Set<Integer> set2;
 
   private Range2D(Range<Integer> range1, Range<Integer> range2) {
-    set1 = range1.asSet(DiscreteDomains.integers());
-    set2 = range2.asSet(DiscreteDomains.integers());
+    set1 = ContiguousSet.create(range1, integers());
+    set2 = ContiguousSet.create(range2, integers());
   }
 
   public static Range2D range2D(Range<Integer> range1, Range<Integer> range2) {
